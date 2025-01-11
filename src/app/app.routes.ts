@@ -3,7 +3,7 @@ import {HomeComponent} from './pages/home/home.component';
 import {NgModule} from '@angular/core';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent},
   { path: '**', redirectTo: '' }
 ];
 
