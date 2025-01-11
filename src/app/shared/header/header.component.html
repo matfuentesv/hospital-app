@@ -6,7 +6,7 @@
     <!-- Enlaces de navegación -->
     <div class="nav-links" style="display: flex; align-items: center; gap: 15px; font-size: 16px;">
       <a routerLink="/" style="text-decoration: none; color: #000;">Inicio</a>
-      <a routerLink="/patient" style="text-decoration: none; color: #000;">Pacientes</a>
+      <a  *ngIf="usuarioEstaConectado()"  routerLink="/patient" style="text-decoration: none; color: #000;">Pacientes</a>
       <span *ngIf="usuarioEstaConectado()" style="font-weight: bold;">Hola, {{ obtenerUsuario() }}</span>
       <a (click)="iniciarSesion()" *ngIf="!usuarioEstaConectado()" style="text-decoration: none; color: #000;">Iniciar Sesión</a>
       <a (click)="cerrarSesion()" *ngIf="usuarioEstaConectado()" style="text-decoration: none; color: #000;">Cerrar Sesión</a>
