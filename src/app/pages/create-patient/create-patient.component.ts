@@ -27,12 +27,7 @@ import {MatButtonModule} from '@angular/material/button';
 })
 export class CreatePatientComponent {
 
-  constructor(
-    public dialogRef: MatDialogRef<CreatePatientComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+  constructor() {}
 
-  onCancel(): void {
-    this.dialogRef.close();
-  }
+
 }

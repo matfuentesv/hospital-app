@@ -4,6 +4,7 @@ import {PatientService} from '../../core/services/patient.service';
 import {NgForOf, NgIf} from '@angular/common';
 import {CreatePatientComponent} from '../create-patient/create-patient.component';
 import {MatDialog} from '@angular/material/dialog';
+import {Router} from '@angular/router';
 
 
 
@@ -23,7 +24,7 @@ export class PatientListComponent {
   loading: boolean = true;
 
   constructor(private patientService: PatientService,
-              private dialog: MatDialog) {}
+              private router: Router) {}
 
   ngOnInit(): void {
     this.getPatients();
@@ -43,17 +44,7 @@ export class PatientListComponent {
   }
 
   onCreatePatient(): void {
-    const dialogRef = this.dialog.open(CreatePatientComponent, {
-      width: 'auto',
-      data: {},
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        console.log('Paciente creado:', result);
-        this.getPatients(); // Recargar lista de pacientes si se creó uno nuevo
-      }
-    });
+    this.router.navigate(['/create-patient']);
   }
 
 }
