@@ -1,3 +1,8 @@
+<div class="header">
+  <h1>Lista de Pacientes</h1>
+  <button class="btn btn-primary create-patient-button" (click)="onCreatePatient()">Crear Paciente</button>
+</div>
+
 <div *ngIf="loading" class="loading">
   <p>Cargando pacientes...</p>
 </div>
@@ -7,7 +12,6 @@
 </div>
 
 <div *ngIf="!loading && patients.length > 0">
-  <h1>Lista de Pacientes</h1>
   <table>
     <thead>
     <tr>

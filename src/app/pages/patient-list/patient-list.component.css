@@ -1,28 +1,21 @@
-.loading {
-  text-align: center;
-  font-size: 1.2em;
-  color: #555;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.no-data {
-  text-align: center;
-  font-size: 1.2em;
-  color: #888;
+.create-patient-button {
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-th, td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-}
-
-th {
-  background-color: #f4f4f4;
-  font-weight: bold;
+.create-patient-button:hover {
+  background-color: #0056b3;
 }
