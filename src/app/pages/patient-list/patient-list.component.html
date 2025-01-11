@@ -1,1 +1,37 @@
-<p>patient-list works!</p>
+<div *ngIf="loading" class="loading">
+  <p>Cargando pacientes...</p>
+</div>
+
+<div *ngIf="!loading && patients.length === 0" class="no-data">
+  <p>No se encontraron pacientes.</p>
+</div>
+
+<div *ngIf="!loading && patients.length > 0">
+  <h1>Lista de Pacientes</h1>
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Edad</th>
+      <th>Teléfono</th>
+      <th>Dirección</th>
+      <th>Frecuencia Cardíaca</th>
+      <th>Temperatura</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let patient of patients">
+      <td>{{ patient.id }}</td>
+      <td>{{ patient.nombre }}</td>
+      <td>{{ patient.apellido }}</td>
+      <td>{{ patient.edad }}</td>
+      <td>{{ patient.telefono }}</td>
+      <td>{{ patient.direccion }}</td>
+      <td>{{ patient.frecuenciaCardiaca }}</td>
+      <td>{{ patient.temperatura }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
