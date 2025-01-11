@@ -1,0 +1,16 @@
+<header>
+  <nav style="display: flex; justify-content: space-between; align-items: center; background-color: #b3e5fc; padding: 10px;">
+    <!-- Título de la librería -->
+    <h1 style="margin: 0; font-size: 24px; font-family: Arial, sans-serif;">Centro Medico,XXXXX</h1>
+
+    <!-- Enlaces de navegación -->
+    <div class="nav-links" style="display: flex; align-items: center; gap: 15px; font-size: 16px;">
+      <a routerLink="/" style="text-decoration: none; color: #000;">Inicio</a>
+      <a routerLink="/book-list" style="text-decoration: none; color: #000;">Libros</a>
+      <span *ngIf="usuarioEstaConectado()" style="font-weight: bold;">Hola, {{ obtenerUsuario() }}</span>
+      <a (click)="iniciarSesion()" *ngIf="!usuarioEstaConectado()" style="text-decoration: none; color: #000;">Iniciar Sesión</a>
+      <a (click)="cerrarSesion()" *ngIf="usuarioEstaConectado()" style="text-decoration: none; color: #000;">Cerrar Sesión</a>
+    </div>
+  </nav>
+</header>
+
