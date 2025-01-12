@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {Patient} from '../../core/models/patient';
 import {PatientService} from '../../core/services/patient.service';
-import {NgForOf, NgIf} from '@angular/common';
+import {NgClass, NgForOf, NgIf} from '@angular/common';
 import {CreatePatientComponent} from '../create-patient/create-patient.component';
 import {MatDialog} from '@angular/material/dialog';
 import {Router} from '@angular/router';
@@ -13,7 +13,8 @@ import {Router} from '@angular/router';
   standalone: true,
   imports: [
     NgIf,
-    NgForOf
+    NgForOf,
+    NgClass
   ],
   templateUrl: './patient-list.component.html',
   styleUrl: './patient-list.component.css'
@@ -45,6 +46,23 @@ export class PatientListComponent {
 
   onCreatePatient(): void {
     this.router.navigate(['/create-patient']);
+  }
+
+  onEditPatient(patient: any): void {
+    this.router.navigate(['/edit-patient'], { state: { patient } });
+  }
+
+  onDeletePatient(patientId: number): void {
+    if (confirm('¿Estás seguro de que deseas eliminar este paciente?')) {
+      this.patientService.deletePatient(patientId).subscribe({
+        next: () => {
+          this.getPatients();
+        },
+        error: (error) => {
+          console.error('Error deleting patient:', error);
+        },
+      });
+    }
   }
 
 }

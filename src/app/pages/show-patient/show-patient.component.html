@@ -1,1 +1,86 @@
-<p>show-patient works!</p>
+<div class="container mt-5">
+  <!-- Header Section -->
+  <div class="row mb-4">
+    <div class="col-12 text-center">
+      <h1 class="display-6">Editar Paciente</h1>
+      <p class="text-muted">Actualiza los datos del paciente</p>
+    </div>
+  </div>
+
+  <!-- Formulario -->
+  <form (ngSubmit)="onSubmit()" class="row g-3">
+    <div class="col-md-6">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input
+        type="text"
+        id="nombre"
+        class="form-control"
+        [(ngModel)]="patient.nombre"
+        name="nombre"
+        required
+      />
+    </div>
+    <div class="col-md-6">
+      <label for="apellido" class="form-label">Apellido</label>
+      <input
+        type="text"
+        id="apellido"
+        class="form-control"
+        [(ngModel)]="patient.apellido"
+        name="apellido"
+        required
+      />
+    </div>
+    <div class="col-md-6">
+      <label for="edad" class="form-label">Edad</label>
+      <input
+        type="number"
+        id="edad"
+        class="form-control"
+        [(ngModel)]="patient.edad"
+        name="edad"
+        required
+      />
+    </div>
+    <div class="col-md-6">
+      <label for="telefono" class="form-label">Teléfono</label>
+      <input
+        type="text"
+        id="telefono"
+        class="form-control"
+        [(ngModel)]="patient.telefono"
+        name="telefono"
+        required
+      />
+    </div>
+    <div class="col-12">
+      <label for="direccion" class="form-label">Dirección</label>
+      <input
+        type="text"
+        id="direccion"
+        class="form-control"
+        [(ngModel)]="patient.direccion"
+        name="direccion"
+        required
+      />
+    </div>
+    <div class="col-md-6">
+      <label for="alertaNivel" class="form-label">Nivel de Alerta</label>
+      <select
+        id="alertaNivel"
+        class="form-select"
+        [(ngModel)]="patient.alertaNivel"
+        name="alertaNivel"
+        required
+      >
+        <option value="BAJO" [selected]="patient.alertaNivel === 'BAJO'">Bajo</option>
+        <option value="MEDIO" [selected]="patient.alertaNivel === 'MEDIO'">Medio</option>
+        <option value="ALTO" [selected]="patient.alertaNivel === 'ALTO'">Alto</option>
+      </select>
+    </div>
+    <div class="col-12 text-center mt-4">
+      <button type="submit" class="btn btn-primary me-2">Guardar</button>
+      <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancelar</button>
+    </div>
+  </form>
+</div>
