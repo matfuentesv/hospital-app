@@ -46,9 +46,10 @@
         <td>
             <span
               [ngClass]="{
-                'badge bg-success': patient.alertaNivel === 'BAJO',
-                'badge bg-warning': patient.alertaNivel === 'MEDIO',
-                'badge bg-danger': patient.alertaNivel === 'ALTO'
+                'badge bg-success': patient.alertaNivel === 'BAJA',
+                'badge bg-warning': patient.alertaNivel === 'MEDIA',
+                'badge bg-danger': patient.alertaNivel === 'ALTA',
+                'badge bg-black': patient.alertaNivel === 'CRITICA'
               }"
             >
               {{ patient.alertaNivel }}

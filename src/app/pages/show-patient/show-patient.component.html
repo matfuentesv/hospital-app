@@ -8,7 +8,7 @@
   </div>
 
   <!-- Formulario -->
-  <form (ngSubmit)="onSubmit()" class="row g-3">
+  <form  class="row g-3">
     <div class="col-md-6">
       <label for="nombre" class="form-label">Nombre</label>
       <input
@@ -73,13 +73,13 @@
         name="alertaNivel"
         required
       >
-        <option value="BAJO" [selected]="patient.alertaNivel === 'BAJO'">Bajo</option>
-        <option value="MEDIO" [selected]="patient.alertaNivel === 'MEDIO'">Medio</option>
-        <option value="ALTO" [selected]="patient.alertaNivel === 'ALTO'">Alto</option>
+        <option value="BAJO" [selected]="patient.alertaNivel === 'BAJA'">Bajo</option>
+        <option value="MEDIO" [selected]="patient.alertaNivel === 'MEDIA'">Medio</option>
+        <option value="ALTO" [selected]="patient.alertaNivel === 'ALTA'">Alto</option>
       </select>
     </div>
     <div class="col-12 text-center mt-4">
-      <button type="submit" class="btn btn-primary me-2">Guardar</button>
+      <button type="submit" class="btn btn-primary me-2" (click)="onEdit(patient)">Guardar</button>
       <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancelar</button>
     </div>
   </form>
