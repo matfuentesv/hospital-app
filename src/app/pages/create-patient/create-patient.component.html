@@ -5,6 +5,10 @@
     <div class="form-section">
       <h2>Información Personal</h2>
       <div class="form-group">
+        <div class="form-group">
+          <label for="nombre">Rut</label>
+          <input type="text" id="rut" name="rut" ngModel required />
+        </div>
         <label for="nombre">Nombre</label>
         <input type="text" id="nombre" name="nombre" ngModel required />
       </div>
@@ -15,18 +19,28 @@
       </div>
 
       <div class="form-group">
+        <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+        <input
+          type="date"
+          id="fechaNacimiento"
+          class="form-control"
+          name="fechaNacimiento"
+          required
+        />
+      </div>
+
+      <div class="form-group">
         <label for="edad">Edad</label>
         <input type="text" id="edad" name="edad" ngModel required />
       </div>
 
       <div class="form-group">
-        <label for="telefono">Teléfono</label>
-        <input type="tel" id="telefono" name="telefono" ngModel required />
-      </div>
-
-      <div class="form-group">
         <label for="direccion">Dirección</label>
         <textarea id="direccion" name="direccion" ngModel required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="telefono">Teléfono</label>
+        <input type="tel" id="telefono" name="telefono" ngModel required />
       </div>
     </div>
 
@@ -36,9 +50,9 @@
       <div class="form-group">
         <label for="alertaNivel">Nivel de Alerta</label>
         <select id="alertaNivel" name="alertaNivel" ngModel required>
-          <option value="BAJA">Baja</option>
-          <option value="MEDIA">Media</option>
-          <option value="ALTA">Alta</option>
+          <option value="BAJA">BAJA</option>
+          <option value="MEDIA">MEDIA</option>
+          <option value="ALTA">ALTA</option>
         </select>
       </div>
 

@@ -45,6 +45,6 @@ export class CreatePatientComponent {
   }
 
   onCancel(): void {
-    this.router.navigate(['/patients']); // Volver a la lista al cancelar
+    this.router.navigate(['/patients']);
   }
 }
