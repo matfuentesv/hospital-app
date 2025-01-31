@@ -26,11 +26,13 @@
       <thead class="table-dark">
       <tr>
         <th>ID</th>
+        <th>Rut</th>
         <th>Nombre</th>
         <th>Apellido</th>
         <th>Edad</th>
         <th>Teléfono</th>
         <th>Dirección</th>
+        <th>Fech.Nacimiento</th>
         <th>Nivel de Alerta</th>
         <th>Acciones</th>
       </tr>
@@ -38,11 +40,13 @@
       <tbody>
       <tr *ngFor="let patient of patients">
         <td>{{ patient.id }}</td>
+        <td>{{ patient.rut }}</td>
         <td>{{ patient.nombre }}</td>
         <td>{{ patient.apellido }}</td>
         <td>{{ patient.edad }}</td>
         <td>{{ patient.telefono }}</td>
         <td>{{ patient.direccion }}</td>
+        <td>{{ patient.fechaNacimiento }}</td>
         <td>
             <span
               [ngClass]="{
