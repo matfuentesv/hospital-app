@@ -13,8 +13,12 @@ export class VitalSignsService {
 
   constructor(private http: HttpClient) {}
 
-  createVitalSigns(signs: VitalSigns): Observable<string> {
-    return this.http.post<string>(`${endpoints.vitalSigns.path}/send`, signs);
+  createVitalSignsAlert(signs: VitalSigns): Observable<string> {
+    return this.http.post<string>(`${endpoints.vitalSignsAlert.path}/send`, signs);
+  }
+
+  createVitalSignsSummary(signs: VitalSigns): Observable<string> {
+    return this.http.post<string>(`${endpoints.vitalSignsSummary.path}/send`, signs);
   }
 
 

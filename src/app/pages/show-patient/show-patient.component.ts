@@ -78,7 +78,7 @@ export class ShowPatientComponent implements OnInit{
         alertaNivel:this.patientForm.get('alertaNivel')?.value
       };
       this.patientService.updatePatient(body).subscribe({
-        next: () => this.router.navigate(['/patients']),
+        next: () => this.router.navigate(['/patient']),
         error: (error) => console.error('Error al actualizar paciente:', error),
       });
     }
@@ -114,18 +114,21 @@ export class ShowPatientComponent implements OnInit{
         });
       }
 
-      this.signs.createVitalSigns(signs).subscribe(rsp => {
+      this.signs.createVitalSignsAlert(signs).subscribe(rsp => {
         Swal.fire({
           icon: 'success',
           title: 'Éxito',
           text: 'Signos vitales guardados correctamente.',
         });
       });
-      this.getSignVitalByPatients(this.patientId);
+      this.signs.createVitalSignsSummary(signs).subscribe(rsp => {
+      });
+
       const modalElement = document.getElementById('vitalSignsModal');
       if (modalElement) {
         const modal = bootstrap.Modal.getInstance(modalElement);
         modal?.hide();
+        this.getSignVitalByPatients(this.patientId);
       }
     } else {
       Swal.fire({
