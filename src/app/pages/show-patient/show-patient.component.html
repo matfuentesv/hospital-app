@@ -60,19 +60,15 @@
     <table class="table table-striped mt-3">
       <thead>
       <tr>
-<!--        <th>Fecha</th>-->
-        <th>Presión Arterial</th>
         <th>Frecuencia Cardíaca</th>
-        <th>Temperatura</th>
+        <th>Presión Arterial</th>
         <th>Oxigenación</th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let vital of vitalSignsHistory">
-<!--        <td>{{ vital.fecha }}</td>-->
-        <td>{{ vital.presionArterial }}</td>
         <td>{{ vital.frecuenciaCardiaca }}</td>
-<!--        <td>{{ vital.temperatura }}</td>-->
+        <td>{{ vital.presionArterial }}</td>
         <td>{{ vital.nivelOxigeno }}</td>
       </tr>
       </tbody>

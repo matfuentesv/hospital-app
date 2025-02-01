@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Patient} from '../models/patient';
 import {endpoints} from '../../enviroments/endpoints';
+import {VitalSigns} from '../models/vital-signs';
 @Injectable({
   providedIn: 'root'
 })
@@ -27,8 +28,8 @@ export class PatientService {
     return this.http.get<Patient[]>(`${endpoints.patients.path}/findAllPatient`,this.getHttpOptions());
   }
 
-  getPatient(id: number): Observable<Patient> {
-    return this.http.get<Patient>(`${endpoints.patients.path}/findPatient/${id}`,this.getHttpOptions());
+  getSignVitalByPatient(id: number): Observable<VitalSigns[]> {
+    return this.http.get<VitalSigns[]>(`${endpoints.patients.path}/findSignVitalByPacientee/${id}`,this.getHttpOptions());
   }
 
   createPatient(patient: Patient): Observable<Patient> {

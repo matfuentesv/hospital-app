@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PatientService } from '../../core/services/patient.service';
@@ -7,6 +7,7 @@ import { VitalSigns } from '../../core/models/vital-signs';
 import { NgForOf } from '@angular/common';
 import Swal from 'sweetalert2';
 import {Patient} from '../../core/models/patient';
+
 
 declare var bootstrap: any;
 
@@ -20,11 +21,12 @@ declare var bootstrap: any;
   ],
   styleUrls: ['./show-patient.component.css']
 })
-export class ShowPatientComponent {
+export class ShowPatientComponent implements OnInit{
   patientForm: FormGroup;
   vitalSignsForm: FormGroup;
   vitalSignsHistory: VitalSigns[] = [];
   patientId: number;
+  loading: boolean = true;
 
   private static readonly MIN_PRESION_ARTERIAL = 50;
   private static readonly MAX_PRESION_ARTERIAL = 120;
@@ -58,9 +60,13 @@ export class ShowPatientComponent {
     });
   }
 
+  ngOnInit(): void {
+    this.getSignVitalByPatients(this.patientId)
+  }
+
   onEdit(): void {
     if (this.patientForm.valid) {
-      const xxxx: Patient = {
+      const body: Patient = {
         id: this.patientId,
         rut: this.patientForm.get('rut')?.value,
         nombre:this.patientForm.get('nombre')?.value,
@@ -71,7 +77,7 @@ export class ShowPatientComponent {
         telefono: this.patientForm.get('telefono')?.value,
         alertaNivel:this.patientForm.get('alertaNivel')?.value
       };
-      this.patientService.updatePatient(xxxx).subscribe({
+      this.patientService.updatePatient(body).subscribe({
         next: () => this.router.navigate(['/patients']),
         error: (error) => console.error('Error al actualizar paciente:', error),
       });
@@ -115,7 +121,7 @@ export class ShowPatientComponent {
           text: 'Signos vitales guardados correctamente.',
         });
       });
-
+      this.getSignVitalByPatients(this.patientId);
       const modalElement = document.getElementById('vitalSignsModal');
       if (modalElement) {
         const modal = bootstrap.Modal.getInstance(modalElement);
@@ -137,4 +143,20 @@ export class ShowPatientComponent {
       signs.nivelOxigeno < ShowPatientComponent.MIN_NIVEL_OXIGENO
     );
   }
+
+
+  getSignVitalByPatients(id: number): void {
+    this.patientService.getSignVitalByPatient(id).subscribe({
+      next: (data) => {
+        this.vitalSignsHistory = data;
+        this.loading = false;
+      },
+      error: (error) => {
+        console.error('Error al obtener pacientes:', error);
+        this.loading = false;
+      },
+    });
+  }
+
+
 }
