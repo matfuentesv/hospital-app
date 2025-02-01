@@ -1,113 +1,3 @@
-<!--<div class="container mt-5">-->
-<!--  &lt;!&ndash; Header Section &ndash;&gt;-->
-<!--  <div class="row mb-4">-->
-<!--    <div class="col-12 text-center">-->
-<!--      <h1 class="display-6">Editar Paciente</h1>-->
-<!--      <p class="text-muted">Actualiza los datos del paciente</p>-->
-<!--    </div>-->
-<!--  </div>-->
-
-<!--  &lt;!&ndash; Formulario &ndash;&gt;-->
-<!--  <form  class="row g-3">-->
-<!--    <div class="col-md-4">-->
-<!--      <label for="nombre" class="form-label">Rut</label>-->
-<!--      <input-->
-<!--        type="text"-->
-<!--        id="rut"-->
-<!--        class="form-control"-->
-<!--        [(ngModel)]="patient.rut"-->
-<!--        name="rut"-->
-<!--        required-->
-<!--      />-->
-<!--    </div>-->
-<!--    <div class="col-md-4">-->
-<!--      <label for="nombre" class="form-label">Nombre</label>-->
-<!--      <input-->
-<!--        type="text"-->
-<!--        id="nombre"-->
-<!--        class="form-control"-->
-<!--        [(ngModel)]="patient.nombre"-->
-<!--        name="nombre"-->
-<!--        required-->
-<!--      />-->
-<!--    </div>-->
-<!--    <div class="col-md-4">-->
-<!--      <label for="apellido" class="form-label">Apellido</label>-->
-<!--      <input-->
-<!--        type="text"-->
-<!--        id="apellido"-->
-<!--        class="form-control"-->
-<!--        [(ngModel)]="patient.apellido"-->
-<!--        name="apellido"-->
-<!--        required-->
-<!--      />-->
-<!--    </div>-->
-<!--    <div class="col-md-4">-->
-<!--      <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>-->
-<!--      <input-->
-<!--        type="date"-->
-<!--        id="fechaNacimiento"-->
-<!--        class="form-control"-->
-<!--        [(ngModel)]="patient.fechaNacimiento"-->
-<!--        name="fechaNacimiento"-->
-<!--        required-->
-<!--      />-->
-<!--    </div>-->
-<!--    <div class="col-md-4">-->
-<!--      <label for="edad" class="form-label">Edad</label>-->
-<!--      <input-->
-<!--        type="number"-->
-<!--        id="edad"-->
-<!--        class="form-control"-->
-<!--        [(ngModel)]="patient.edad"-->
-<!--        name="edad"-->
-<!--        required-->
-<!--      />-->
-<!--    </div>-->
-<!--    <div class="col-4">-->
-<!--      <label for="direccion" class="form-label">Dirección</label>-->
-<!--      <input-->
-<!--        type="text"-->
-<!--        id="direccion"-->
-<!--        class="form-control"-->
-<!--        [(ngModel)]="patient.direccion"-->
-<!--        name="direccion"-->
-<!--        required-->
-<!--      />-->
-<!--    </div>-->
-
-<!--        <div class="col-md-4">-->
-<!--      <label for="telefono" class="form-label">Teléfono</label>-->
-<!--      <input-->
-<!--        type="text"-->
-<!--        id="telefono"-->
-<!--        class="form-control"-->
-<!--        [(ngModel)]="patient.telefono"-->
-<!--        name="telefono"-->
-<!--        required-->
-<!--      />-->
-<!--    </div>-->
-
-<!--    <div class="col-md-4">-->
-<!--      <label for="alertaNivel" class="form-label">Nivel de Alerta</label>-->
-<!--      <select-->
-<!--        id="alertaNivel"-->
-<!--        class="form-select"-->
-<!--        [(ngModel)]="patient.alertaNivel"-->
-<!--        name="alertaNivel"-->
-<!--        required>-->
-<!--        <option value="BAJA">BAJA</option>-->
-<!--        <option value="MEDIA">MEDIA</option>-->
-<!--        <option value="ALTA">ALTA</option>-->
-<!--      </select>-->
-<!--    </div>-->
-
-<!--    <div class="col-12 text-center mt-4">-->
-<!--      <button type="submit" class="btn btn-primary me-2" (click)="onEdit(patient)">Guardar</button>-->
-<!--      <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancelar</button>-->
-<!--    </div>-->
-<!--  </form>-->
-<!--</div>-->
 <div class="container mt-5">
   <!-- Header Section -->
   <div class="row mb-4 align-items-center">
@@ -116,61 +6,61 @@
       <p class="text-muted">Actualiza los datos del paciente</p>
     </div>
     <div class="col-2 text-end">
-      <button class="btn btn-success" (click)="onAddVitalSigns()">Agregar Signos Vitales</button>
+      <button class="btn btn-success" (click)="openVitalSignsModal()">Agregar S.V. anormales</button>
     </div>
   </div>
 
   <!-- Formulario -->
-  <form class="row g-3">
+  <form [formGroup]="patientForm" class="row g-3">
     <div class="col-md-4">
       <label for="rut" class="form-label">Rut</label>
-      <input type="text" id="rut" class="form-control" [(ngModel)]="patient.rut" name="rut" required />
+      <input type="text" id="rut" class="form-control" formControlName="rut" required />
     </div>
     <div class="col-md-4">
       <label for="nombre" class="form-label">Nombre</label>
-      <input type="text" id="nombre" class="form-control" [(ngModel)]="patient.nombre" name="nombre" required />
+      <input type="text" id="nombre" class="form-control" formControlName="nombre" required />
     </div>
     <div class="col-md-4">
       <label for="apellido" class="form-label">Apellido</label>
-      <input type="text" id="apellido" class="form-control" [(ngModel)]="patient.apellido" name="apellido" required />
+      <input type="text" id="apellido" class="form-control" formControlName="apellido" required />
     </div>
     <div class="col-md-4">
       <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
-      <input type="date" id="fechaNacimiento" class="form-control" [(ngModel)]="patient.fechaNacimiento" name="fechaNacimiento" required />
+      <input type="date" id="fechaNacimiento" class="form-control" formControlName="fechaNacimiento" required />
     </div>
     <div class="col-md-4">
       <label for="edad" class="form-label">Edad</label>
-      <input type="number" id="edad" class="form-control" [(ngModel)]="patient.edad" name="edad" required />
+      <input type="number" id="edad" class="form-control" formControlName="edad" required />
     </div>
     <div class="col-4">
       <label for="direccion" class="form-label">Dirección</label>
-      <input type="text" id="direccion" class="form-control" [(ngModel)]="patient.direccion" name="direccion" required />
+      <input type="text" id="direccion" class="form-control" formControlName="direccion" required />
     </div>
     <div class="col-md-4">
       <label for="telefono" class="form-label">Teléfono</label>
-      <input type="text" id="telefono" class="form-control" [(ngModel)]="patient.telefono" name="telefono" required />
+      <input type="text" id="telefono" class="form-control" formControlName="telefono" required />
     </div>
     <div class="col-md-4">
       <label for="alertaNivel" class="form-label">Nivel de Alerta</label>
-      <select id="alertaNivel" class="form-select" [(ngModel)]="patient.alertaNivel" name="alertaNivel" required>
+      <select id="alertaNivel" class="form-select" formControlName="alertaNivel" required>
         <option value="BAJA">BAJA</option>
         <option value="MEDIA">MEDIA</option>
         <option value="ALTA">ALTA</option>
       </select>
     </div>
     <div class="col-12 text-center mt-4">
-      <button type="submit" class="btn btn-primary me-2" (click)="onEdit(patient)">Guardar</button>
+      <button type="submit" class="btn btn-primary me-2" [disabled]="!patientForm.valid" (click)="onEdit()">Guardar</button>
       <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancelar</button>
     </div>
   </form>
 
   <!-- Histórico de Signos Vitales -->
   <div class="mt-5">
-    <h2 class="h5">Histórico de Signos Vitales</h2>
+    <h2 class="h5">Histórico de Signos Vitales anormales</h2>
     <table class="table table-striped mt-3">
       <thead>
       <tr>
-        <th>Fecha</th>
+<!--        <th>Fecha</th>-->
         <th>Presión Arterial</th>
         <th>Frecuencia Cardíaca</th>
         <th>Temperatura</th>
@@ -179,13 +69,45 @@
       </thead>
       <tbody>
       <tr *ngFor="let vital of vitalSignsHistory">
-        <td>{{ vital.fecha }}</td>
+<!--        <td>{{ vital.fecha }}</td>-->
         <td>{{ vital.presionArterial }}</td>
         <td>{{ vital.frecuenciaCardiaca }}</td>
-        <td>{{ vital.temperatura }}</td>
-        <td>{{ vital.oxigenacion }}</td>
+<!--        <td>{{ vital.temperatura }}</td>-->
+        <td>{{ vital.nivelOxigeno }}</td>
       </tr>
       </tbody>
     </table>
+  </div>
+
+  <!-- Modal para Agregar Signos Vitales -->
+  <div class="modal fade" id="vitalSignsModal" tabindex="-1" aria-labelledby="vitalSignsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="vitalSignsModalLabel">Agregar Signos Vitales</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="vitalSignsForm">
+            <div class="mb-3">
+              <label class="form-label">Frecuencia Cardíaca</label>
+              <input type="number" class="form-control" formControlName="frecuenciaCardiaca" required />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Presión Arterial</label>
+              <input type="number" class="form-control" formControlName="presionArterial" required />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Oxigenación</label>
+              <input type="number" class="form-control" formControlName="nivelOxigeno" required />
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" (click)="addVitalSign()" [disabled]="!vitalSignsForm.valid">Guardar</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import {Patient} from '../../core/models/patient';
 import {PatientService} from '../../core/services/patient.service';
 import {NgClass, NgForOf, NgIf} from '@angular/common';
-import {CreatePatientComponent} from '../create-patient/create-patient.component';
-import {MatDialog} from '@angular/material/dialog';
 import {Router} from '@angular/router';
 
 

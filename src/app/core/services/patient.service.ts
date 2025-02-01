@@ -24,22 +24,22 @@ export class PatientService {
   }
 
   getAllPatient(): Observable<Patient[]> {
-    return this.http.get<Patient[]>(`${endpoints.findAllPatient.path}/findAllPatient`,this.getHttpOptions());
+    return this.http.get<Patient[]>(`${endpoints.patients.path}/findAllPatient`,this.getHttpOptions());
   }
 
   getPatient(id: number): Observable<Patient> {
-    return this.http.get<Patient>(`${endpoints.findAllPatient.path}/findPatient/${id}`,this.getHttpOptions());
+    return this.http.get<Patient>(`${endpoints.patients.path}/findPatient/${id}`,this.getHttpOptions());
   }
 
   createPatient(patient: Patient): Observable<Patient> {
-    return this.http.post<Patient>(`${endpoints.findAllPatient.path}/createPatient`, patient,this.getHttpOptions());
+    return this.http.post<Patient>(`${endpoints.patients.path}/createPatient`, patient,this.getHttpOptions());
   }
 
   updatePatient(patient: Patient): Observable<Patient> {
-    return this.http.put<Patient>(`${endpoints.findAllPatient.path}/updatePatient/${patient.id}`, patient,this.getHttpOptions());
+    return this.http.put<Patient>(`${endpoints.patients.path}/updatePatient/${patient.id}`, patient,this.getHttpOptions());
   }
 
   deletePatient(id: number): Observable<void> {
-    return this.http.delete<void>(`${endpoints.findAllPatient.path}/deletePatient/${id}`,this.getHttpOptions());
+    return this.http.delete<void>(`${endpoints.patients.path}/deletePatient/${id}`,this.getHttpOptions());
   }
 }
