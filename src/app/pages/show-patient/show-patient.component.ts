@@ -46,7 +46,7 @@ export class ShowPatientComponent implements OnInit{
       rut: [patientData?.rut || '', Validators.required],
       nombre: [patientData?.nombre || '', Validators.required],
       apellido: [patientData?.apellido || '', Validators.required],
-      fechaNacimiento: [patientData?.fechaNacimiento || '', Validators.required],
+      fechaNacimiento: [this.formatDate(patientData.fechaNacimiento|| ''), Validators.required],
       edad: [patientData?.edad || '', Validators.required],
       direccion: [patientData?.direccion || '', Validators.required],
       telefono: [patientData?.telefono || '', Validators.required],
@@ -63,6 +63,13 @@ export class ShowPatientComponent implements OnInit{
   ngOnInit(): void {
     this.getSignVitalByPatients(this.patientId)
   }
+
+  private formatDate(fecha: string): string | null {
+    if (!fecha) return null;
+    const fechaObj = new Date(fecha);
+    return fechaObj.toISOString().split('T')[0]; // Devuelve YYYY-MM-DD
+  }
+
 
   onEdit(): void {
     if (this.patientForm.valid) {

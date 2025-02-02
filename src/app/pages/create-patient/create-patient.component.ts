@@ -32,7 +32,15 @@ export class CreatePatientComponent {
 
   onSubmit(form: any): void {
     if (form.valid) {
-      this.patientService.createPatient(form.value).subscribe({
+      let pacienteData = form.value;
+
+      // Convertir fecha de nacimiento al formato correcto
+      if (pacienteData.fechaNacimiento) {
+        const fecha = new Date(pacienteData.fechaNacimiento);
+        pacienteData.fechaNacimiento = fecha.toISOString().split('T')[0]; // Formato YYYY-MM-DD
+      }
+
+      this.patientService.createPatient(pacienteData).subscribe({
         next: (response) => {
           console.log('Paciente creado:', response);
           this.router.navigate(['/patients']); // Redirigir a la lista de pacientes
